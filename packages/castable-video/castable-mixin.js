@@ -147,6 +147,12 @@ export const CastableMediaMixin = (superclass) =>
           mediaInfo.hlsSegmentFormat = chrome.cast.media.HlsSegmentFormat.FMP4;
           mediaInfo.hlsVideoSegmentFormat = chrome.cast.media.HlsVideoSegmentFormat.FMP4;
         }
+        const isTS = segmentFormat?.includes('ts') || segmentFormat?.includes('ts');
+        if (isTS) {
+          mediaInfo.hlsSegmentFormat = chrome.cast.media.HlsSegmentFormat.TS;
+          mediaInfo.hlsVideoSegmentFormat = chrome.cast.media.HlsVideoSegmentFormat.TS;
+        }        
+
       }
 
       const request = new chrome.cast.media.LoadRequest(mediaInfo);
